@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -17,26 +16,24 @@
 <body>
 
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTab(event, 'index.html')">Trang Chủ / Báo Cáo 1</button>
+        <!-- Nút trỏ tới giao diện báo cáo thứ nhất -->
+        <button class="tab-button active" onclick="openTab(event, 'trang_chu.html')">Báo Cáo Checklist Lặp</button>
+        <!-- Nút trỏ tới giao diện báo cáo rời mạng T10 -->
         <button class="tab-button" onclick="openTab(event, 'bao_cao_roi_mang_T10.html')">Báo Cáo Rời Mạng T10</button>
     </div>
 
     <div class="content-container">
-        <iframe id="reportFrame" src="index.html"></iframe>
+        <!-- Mặc định khi mở link sẽ hiển thị file trang_chu.html trước -->
+        <iframe id="reportFrame" src="trang_chu.html"></iframe>
     </div>
 
     <script>
         function openTab(evt, filename) {
-            // Đổi nguồn file hiển thị trong iframe
             document.getElementById('reportFrame').src = filename;
-            
-            // Xóa trạng thái active của tất cả các nút
             let buttons = document.getElementsByClassName("tab-button");
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].className = buttons[i].className.replace(" active", "");
             }
-            
-            // Thêm trạng thái active cho nút vừa bấm
             evt.currentTarget.className += " active";
         }
     </script>
