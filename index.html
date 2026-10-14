@@ -29,3 +29,47 @@ document.querySelectorAll('table').forEach(function(t){var hs=[].map.call(t.quer
  });
 });
 </script></body></html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hệ Thống Báo Cáo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f7f6; }
+        .tab-container { display: flex; background: #2c3e50; padding: 10px 20px 0; }
+        .tab-button { background: #34495e; color: white; border: none; padding: 12px 24px; cursor: pointer; font-size: 16px; margin-right: 5px; border-top-left-radius: 6px; border-top-right-radius: 6px; transition: 0.3s; }
+        .tab-button:hover { background: #3b5998; }
+        .tab-button.active { background: #ffffff; color: #2c3e50; font-weight: bold; }
+        .content-container { width: 100%; height: calc(100vh - 55px); background: white; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="tab-container">
+        <button class="tab-button active" onclick="openTab(event, 'index.html')">Trang Chủ / Báo Cáo 1</button>
+        <button class="tab-button" onclick="openTab(event, 'bao_cao_roi_mang_T10.html')">Báo Cáo Rời Mạng T10</button>
+    </div>
+
+    <div class="content-container">
+        <iframe id="reportFrame" src="index.html"></iframe>
+    </div>
+
+    <script>
+        function openTab(evt, filename) {
+            // Đổi nguồn file hiển thị trong iframe
+            document.getElementById('reportFrame').src = filename;
+            
+            // Xóa trạng thái active của tất cả các nút
+            let buttons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].className = buttons[i].className.replace(" active", "");
+            }
+            
+            // Thêm trạng thái active cho nút vừa bấm
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+</html>
